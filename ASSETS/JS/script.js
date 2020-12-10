@@ -1,3 +1,6 @@
+
+// ----------------------------TOUTES LES CONSTANTES QUOTES-------------------------------// 
+
 const quotesData = [
   {
     "text": "Dans le monde il n’y a pas d’un côté le bien et le mal, il y a une part de lumière et d’ombre en chacun de nous. Ce qui compte c’est celle que l’on choisit de montrer dans nos actes, ça c’est ce que l’on est vraiment.",
@@ -25,6 +28,8 @@ const quotesData = [
   }
   ];
 
+  // ----------------------------TOUTES LES COULEURS-------------------------------// 
+
   const colors = [
   '#16a085',
   '#27ae60',
@@ -40,18 +45,33 @@ const quotesData = [
   '#73A857'
 ];
 
+
 let currentQuote = '';
 let currentAuthor = '';
+
+
+
+// ----------------------------GÉNÉRER UNE COULEUR RANDOM-------------------------------// 
 
 function getRandomColor() {
   const randomColor = colors[
     Math.floor(Math.random() * colors.length)
   ];
 
-  // Your code below
 
-  // Your code above
+  let bodyColor = document.getElementsByTagName ("body");
+  bodyColor[0].style.backgroundColor = randomColor;
+
+  
+  let textColor = document.getElementById("quote-box");
+  textColor.style.color = randomColor;
+
+  
+  let quoteButton = document.getElementById("new-quote");
+  quoteButton.style.backgroundColor = randomColor;
 }
+
+// ----------------------------GÉNÉRER UNE CITATION RANDOM-------------------------------//
 
 function getRandomQuote() {
   const randomQuote = quotesData[
@@ -61,15 +81,17 @@ function getRandomQuote() {
   currentQuote = randomQuote.text;
   currentAuthor = randomQuote.author;
 
-  // Your code below
+  let quoteTexte = document.getElementById('text');
+  quoteTexte.innerHTML = randomQuote.text;
 
-  // Your code above
+  let quoteAutor = document.getElementById('author');
+  quoteAutor.innerHTML = randomQuote.author;
 
   getRandomColor();
 }
 
 getRandomQuote();
 
-// Your code below
+let newQuote = document.getElementById("new-quote");
+newQuote.onclick = getRandomQuote;
 
-// Your code above
